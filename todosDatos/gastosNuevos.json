@@ -27,13 +27,13 @@
         {
             "monto": 8000.0,
             "categoria": "entretenimiento",
-            "descripcion": "película",
+            "descripcion": "pel\u00edcula",
             "fecha": "07/05/2025"
         },
         {
             "monto": 3000.0,
             "categoria": "otros",
-            "descripcion": "café",
+            "descripcion": "caf\u00e9",
             "fecha": "02/05/2025"
         },
         {
@@ -81,7 +81,7 @@
         {
             "monto": 9500.0,
             "categoria": "comida",
-            "descripcion": "panadería",
+            "descripcion": "panader\u00eda",
             "fecha": "05/05/2025"
         },
         {
@@ -93,7 +93,7 @@
         {
             "monto": 1500.0,
             "categoria": "otros",
-            "descripcion": "bolígrafo",
+            "descripcion": "bol\u00edgrafo",
             "fecha": "07/05/2025"
         },
         {
@@ -131,6 +131,18 @@
             "categoria": "transporte",
             "descripcion": "Uber",
             "fecha": "12/05/2025"
+        },
+        {
+            "monto": 1234565.0,
+            "categoria": "casa",
+            "descripcion": "mjynhtbrwveqwc",
+            "fecha": "13/03/2345"
+        },
+        {
+            "monto": 23456.0,
+            "categoria": "scdvrbthy",
+            "descripcion": "btry",
+            "fecha": "31/03/1235"
         }
     ]
 }
