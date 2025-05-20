@@ -232,14 +232,97 @@ Seleccione el periodo de cálculo:
             print ("Total= ",totalSumaMonto)
 
 
-
+#### Revisar
 
         elif ( calcularTgastos == 2 ):
+      
                 print(" Calcular total semana")
+                print ( " Ingrese fecha inicio y fin del mes que quiere filtrar\n")
+                print ( " Fecha de inicio: ")
+                dia = ( int (input ("Dia= ")))
+                mes = ( int (input ("Mes= ")))
+                year = ( int (input ("Year = ")))
+                fechaA = f"{dia:02d}/{mes:02d}/{year}"
+                print ( " Fecha final: ")
+                dia = ( int (input ("Dia")))
+                mes = ( int (input ("Mes")))
+                year = ( int (input ("Year\n")))
+                fechaB = f"{dia:02d}/{mes:02d}/{year}"
+                        
+                print("Para la semana del: ",fechaA, " hasta la fecha: ",fechaB)
+
+                # Fecha en formato
+                from datetime import datetime
+
+                fechaD = datetime.strptime(fechaA, "%d/%m/%Y")
+                fechaF = datetime.strptime(fechaB, "%d/%m/%Y")
+
+                print(fechaA)
+                print(fechaB)
+
+                totalSumaMonto1 = 0
+
+                for i in range (len(listadegastos["gastos"])):
+
+                        # Fecha en formato datetime
+                        fechaFormato= datetime.strptime(listadegastos["gastos"][i]["fecha"], "%d/%m/%Y")
+                                
+                        
+                        if fechaD <= fechaFormato <= fechaF:
+                                sumaMonto1 = (listadegastos["gastos"][i]["monto"])
+                                print (sumaMonto1)
+                                totalSumaMonto1 = totalSumaMonto1+sumaMonto1
+
+                                
+                print ("Total= ",totalSumaMonto1)
+                        
+
         elif ( calcularTgastos == 3 ):
+
                 print(" Calcular total mensual")
+                print ( " Ingrese fecha inicio y fin del mes que quiere filtrar\n")
+                print ( " Fecha de inicio: ")
+                dia = ( int (input ("Dia= ")))
+                mes = ( int (input ("Mes= ")))
+                year = ( int (input ("Year = ")))
+                fechaA = f"{dia:02d}/{mes:02d}/{year}"
+                print ( " Fecha final: ")
+                dia = ( int (input ("Dia")))
+                mes = ( int (input ("Mes")))
+                year = ( int (input ("Year\n")))
+                fechaB = f"{dia:02d}/{mes:02d}/{year}"
+                        
+                print("Para la semana del: ",fechaA, " hasta la fecha: ",fechaB)
+
+                # Fecha en formato
+                from datetime import datetime
+
+                fechaD = datetime.strptime(fechaA, "%d/%m/%Y")
+                fechaF = datetime.strptime(fechaB, "%d/%m/%Y")
+
+                print(fechaA)
+                print(fechaB)
+
+                totalSumaMonto1 = 0
+
+                for i in range (len(listadegastos["gastos"])):
+
+                        # Fecha en formato datetime
+                        fechaFormato= datetime.strptime(listadegastos["gastos"][i]["fecha"], "%d/%m/%Y")
+                                
+
+                        if fechaD <= fechaFormato <= fechaF:
+                                sumaMonto1 = (listadegastos["gastos"][i]["monto"])
+                                print (sumaMonto1)
+                                totalSumaMonto1 = totalSumaMonto1+sumaMonto1
+
+                                
+                print ("Total= ",totalSumaMonto1)
         elif ( calcularTgastos == 4 ):
                 print("")
+
+
+
 
     elif ( menuPrincipal == 4 ):
         print ( '''
@@ -291,3 +374,4 @@ Seleccione el periodo de cálculo:
 
 
 
+# Desarrollado por: Maria Alejandra Gomez Archila - cc.1005234916
