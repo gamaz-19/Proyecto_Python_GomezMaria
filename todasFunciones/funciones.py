@@ -1,4 +1,4 @@
-import json
+
 
 
 import json
@@ -20,12 +20,18 @@ def guardarJSON(dic):
 # Reporte
 
 
-def abrirReportesJSON():
-    repoFinal=[]
+def cargarLogs():
+    dicFinal=[]
     with open("./todosDatos/reportes.json",'r') as openFile:
-        repoFinal=json.load(openFile)
-    return repoFinal
+        dicFinal=json.load(openFile)
+    return dicFinal
 
-def guardarReportesJSON (dic):
+def logsJSON(dic):
+    dicTemporal = []
+    
+    
+    diccTemporal=cargarLogs()
+    
+    dicTemporal.append(dic)
     with open("./todosDatos/reportes.json",'w') as outFile:
-        json.dump(dic,outFile)
+        json.dump(dicTemporal,outFile)

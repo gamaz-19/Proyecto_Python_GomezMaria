@@ -63,3 +63,9 @@ Seleccione el periodo de cálculo:
 4. Regresar al menú principal                 
 ==================================================== ''' )
 
+def menuSalirPrograma ():
+    print ( '''
+====================================================
+¿Desea salir del programa? (S/N):               
+==================================================== ''' )
+
