@@ -15,6 +15,7 @@
 
 # Modulo para formato de datos en terminal
 from tabulate import tabulate
+
 # Gastos nuevos JSON
 import json
 from todasFunciones.funciones import*
@@ -26,6 +27,16 @@ listadegastos = abrirJSON()
 
 # Modulo para convertir fechas a datetime
 from datetime import datetime
+
+
+# Reportes JSON
+import json
+from todasFunciones.funciones import abrirReportesJSON
+json.dumps([])
+repoFinal = []
+
+listaReportes = []
+listaReportes = abrirReportesJSON()
 
 #####################################################################
 booleano = True
@@ -131,7 +142,6 @@ while booleano :
                                         
                                         if fechaA <= fechaFormatoDT <= fechaB:
                                                 print (listadegastos["gastos"][i])  
-
 
                         elif (rango == 3):
                                 print (" Gasto mensual")
@@ -276,9 +286,6 @@ while booleano :
                 elif ( calcularTgastos == 4 ):
                         print("")
 
-
-
-
         elif ( menuPrincipal == 4 ):
 
                 from todasFunciones.todosMenus import menuGenerarReportes
@@ -286,11 +293,125 @@ while booleano :
 
                 reporteGastos = ( int (input ( " Ingrese el numero de la opcion que quiere seleccionar: ")))
                 if ( reporteGastos == 1 ):
-                        print(" Reporte diario")
+
+                        print(" Reporte de gastos diarios")
+                        print ( "Ingrese fecha del dia que quiere calcular\n")
+                        dia = ( int (input ("Dia= ")))
+                        mes = ( int (input ("Mes= ")))
+                        year = ( int (input ("Year= ")))
+                        fechaE = f"{dia:02d}/{mes:02d}/{year}"
+
+                        print("Para el dia: ",fechaE)
+                        totalSumaMonto = 0
+                        totalsumCat = 0
+
+                        opcionCategorias = [gasto["categoria"] for gasto in listadegastos["gastos"]]
+                        #Set se usa para quiter los duplicados
+                        opcionCategorias = list(set(opcionCategorias))
+                        for j in range (len(opcionCategorias)):
+                                for i in range (len(listadegastos["gastos"])):
+                                        if (opcionCategorias[j]== listadegastos["gastos"][i]["categoria"]) & (fechaE == listadegastos["gastos"][i]["fecha"]):
+                                                print (listadegastos["gastos"][i])
+                                                sumaMonto = (listadegastos["gastos"][i]["monto"])
+                                                totalsumCat = totalsumCat + sumaMonto
+                                                totalSumaMonto = totalSumaMonto+sumaMonto
+                                if totalsumCat != 0:
+                                        print ("El total de la categoria ",opcionCategorias[j]," es de: ",totalsumCat)
+                                totalsumCat = 0
+                        print ("Total= ",totalSumaMonto)
+
+
+
                 elif ( reporteGastos == 2 ):
                         print(" Reporte semanal")
+
+                        print(" Calcular total mensual")
+                        print ( " Ingrese fecha inicio y fin del mes que quiere filtrar\n")
+                        print ( " Fecha de inicio: ")
+                        dia = ( int (input ("Dia= ")))
+                        mes = ( int (input ("Mes= ")))
+                        year = ( int (input ("Year = ")))
+                        fechaA = f"{dia:02d}/{mes:02d}/{year}"
+                        print ( " Fecha final: ")
+                        dia = ( int (input ("Dia")))
+                        mes = ( int (input ("Mes")))
+                        year = ( int (input ("Year\n")))
+                        fechaB = f"{dia:02d}/{mes:02d}/{year}"
+                                
+                        print("Para la semana del: ",fechaA, " hasta la fecha: ",fechaB)
+
+                        # Fecha en formato
+                        from datetime import datetime
+
+                        fechaA = datetime.strptime(fechaA, "%d/%m/%Y")
+                        fechaB = datetime.strptime(fechaB, "%d/%m/%Y")
+
+                        print(fechaA)
+                        print(fechaB)
+                        totalsumCat = 0
+                        totalSumaMonto = 0
+                        opcionCategorias = [gasto["categoria"] for gasto in listadegastos["gastos"]]
+                        #Set se usa para quiter los duplicados
+                        opcionCategorias = list(set(opcionCategorias))
+                        for j in range (len(opcionCategorias)):
+                                for i in range (len(listadegastos["gastos"])):
+                                        fechaFormatoDT= datetime.strptime(listadegastos["gastos"][i]["fecha"], "%d/%m/%Y")
+
+                                        if (opcionCategorias[j]== listadegastos["gastos"][i]["categoria"]) & (fechaA <= fechaFormatoDT <= fechaB):
+                                                print (listadegastos["gastos"][i])
+                                                sumaMonto = (listadegastos["gastos"][i]["monto"])
+                                                totalsumCat = totalsumCat + sumaMonto
+                                                totalSumaMonto = totalSumaMonto+sumaMonto
+                                if totalsumCat != 0:
+                                        print ("El total de la categoria ",opcionCategorias[j]," es de: ",totalsumCat)
+                                totalsumCat = 0
+
+                        print ("Total= ",totalSumaMonto)
+
                 elif ( reporteGastos == 3 ):
                         print(" Reporte mensual")
+                        print(" Calcular total mensual")
+                        print ( " Ingrese fecha inicio y fin del mes que quiere filtrar\n")
+                        print ( " Fecha de inicio: ")
+                        dia = ( int (input ("Dia= ")))
+                        mes = ( int (input ("Mes= ")))
+                        year = ( int (input ("Year = ")))
+                        fechaA = f"{dia:02d}/{mes:02d}/{year}"
+                        print ( " Fecha final: ")
+                        dia = ( int (input ("Dia")))
+                        mes = ( int (input ("Mes")))
+                        year = ( int (input ("Year\n")))
+                        fechaB = f"{dia:02d}/{mes:02d}/{year}"
+                                
+                        print("Para la semana del: ",fechaA, " hasta la fecha: ",fechaB)
+
+                        # Fecha en formato
+                        from datetime import datetime
+
+                        fechaA = datetime.strptime(fechaA, "%d/%m/%Y")
+                        fechaB = datetime.strptime(fechaB, "%d/%m/%Y")
+
+                        print(fechaA)
+                        print(fechaB)
+                        totalsumCat = 0
+                        totalSumaMonto = 0
+                        opcionCategorias = [gasto["categoria"] for gasto in listadegastos["gastos"]]
+                        #Set se usa para quiter los duplicados
+                        opcionCategorias = list(set(opcionCategorias))
+                        for j in range (len(opcionCategorias)):
+                                for i in range (len(listadegastos["gastos"])):
+                                        fechaFormatoDT= datetime.strptime(listadegastos["gastos"][i]["fecha"], "%d/%m/%Y")
+
+                                        if (opcionCategorias[j]== listadegastos["gastos"][i]["categoria"]) & (fechaA <= fechaFormatoDT <= fechaB):
+                                                print (listadegastos["gastos"][i])
+                                                sumaMonto = (listadegastos["gastos"][i]["monto"])
+                                                totalsumCat = totalsumCat + sumaMonto
+                                                totalSumaMonto = totalSumaMonto+sumaMonto
+                                if totalsumCat != 0:
+                                        print ("El total de la categoria ",opcionCategorias[j]," es de: ",totalsumCat)
+                                totalsumCat = 0
+
+                        print ("Total= ",totalSumaMonto)
                 elif ( reporteGastos == 4 ):
                         print("")
                 
