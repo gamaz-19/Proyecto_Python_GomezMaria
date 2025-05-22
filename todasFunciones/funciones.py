@@ -35,3 +35,6 @@ def logsJSON(dic):
     dicTemporal.append(dic)
     with open("./todosDatos/reportes.json",'w') as outFile:
         json.dump(dicTemporal,outFile)
+
+
+
